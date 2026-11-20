@@ -33,6 +33,7 @@
     "fullBio": "Отвечает за персонажей, окружение и интерфейсы. Создаёт концепты и финальную графику для проектов.",
     "avatar": "./images/covers/conference.webp",
     "banner": "./data/projects/FunkyMogus/images/donate.webp",
+    "banner": "./images/projects/funkymogus/donate.webp",
     "socials": [
       {
         "label": "Telegram",
