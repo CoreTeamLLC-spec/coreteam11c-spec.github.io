@@ -1,0 +1,54 @@
+[
+  {
+    "id": 1,
+    "name": "Иван Петров",
+    "role": "Разработчик",
+    "bio": "Отвечает за геймплей и программирование.",
+    "fullBio": "Отвечает за геймплей, программирование и сборку проектов. Работает над механиками, интерфейсами и оптимизацией.",
+    "avatar": "./data/projects/FunkyMogus/images/icon256.png",
+    "banner": "./data/projects/FunkyMogus/images/cover.webp",
+    "socials": [
+      {
+        "label": "Telegram",
+        "url": "https://t.me/username",
+        "icon": "telegram"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/username",
+        "icon": "github"
+      },
+      {
+        "label": "Boosty",
+        "url": "https://boosty.to/username",
+        "icon": "boosty"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Мария Смирнова",
+    "role": "2D-художник",
+    "bio": "Рисует персонажей и интерфейсы.",
+    "fullBio": "Отвечает за персонажей, окружение и интерфейсы. Создаёт концепты и финальную графику для проектов.",
+    "avatar": "./images/covers/conference.webp",
+    "banner": "./data/projects/FunkyMogus/images/donate.webp",
+    "socials": [
+      {
+        "label": "Telegram",
+        "url": "https://t.me/username2",
+        "icon": "telegram"
+      },
+      {
+        "label": "VK",
+        "url": "https://vk.com/username2",
+        "icon": "vk"
+      },
+      {
+        "label": "Pinterest",
+        "url": "https://pinterest.com/username2",
+        "icon": "pinterest"
+      }
+    ]
+  }
+]

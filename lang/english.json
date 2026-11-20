@@ -1,48 +1,112 @@
 {
+    "meta": {
+        "description": "CoreTeam.LLC creates full-cycle games and digital projects: design, development and sound."
+    },
+    "site": {
+        "title": "CoreTeam.LLC — Games & Digital Projects"
+    },
+    "a11y": {
+        "skip": "Skip to content"
+    },
     "nav": {
         "home": "Home",
         "projects": "Projects",
-        "playlist": "Playlist"
+        "playlist": "Music",
+        "credits": "Credits"
     },
     "sidebar": {
+        "menu": "Menu",
         "system": "System",
         "copyright": "© 2026 CoreTeam.LLC"
     },
     "home": {
-        "title": "We create games and digital projects you want to return to",
-        "desc1": "CoreTeam.LLC is a young company. We create full-cycle games and digital projects: design, development, sound.",
-        "desc2": "Our goal is to make products you want to return to."
+        "title": "Games, digital projects and music with a point of view",
+        "desc1": "CoreTeam.LLC brings development, design and sound together to turn ideas into complete games and digital experiences.",
+        "desc2": "Explore our projects and listen to the original soundtracks behind them.",
+        "ctaProjects": "Explore projects",
+        "ctaPlaylist": "Listen to the soundtrack",
+        "chipGames": "Games",
+        "chipDigital": "Digital projects",
+        "chipSound": "Sound",
+        "heroCardEyebrow": "Now spinning",
+        "heroCardNote": "Original soundtracks from our games",
+        "marquee": "Game design • Development • Sound • Digital projects •",
+        "featuresEyebrow": "Full cycle",
+        "featuresTitle": "What we do",
+        "featuresDesc": "From the first idea to the final mix — everything in-house.",
+        "feature1Title": "Game design",
+        "feature1Desc": "Mechanics, levels and the feel of a game worth coming back to.",
+        "feature2Title": "Development",
+        "feature2Desc": "Games and web products — from prototype to a finished build.",
+        "feature3Title": "Sound",
+        "feature3Desc": "Music, arrangements and sound design for our projects.",
+        "workEyebrow": "Portfolio",
+        "workTitle": "Selected work",
+        "workDesc": "A look at what we have shipped so far.",
+        "workAll": "All projects"
     },
     "projects": {
         "title": "Projects",
+        "eyebrow": "Project",
+        "subtitle": "Discover our games and digital projects — open a project to explore details and download it.",
         "loading": "Loading...",
         "empty": "No projects yet.",
         "back": "Back to projects",
         "description": "Description",
+        "details": "Details",
         "screenshots": "Screenshots",
         "download": "Download",
-        "updated": "Updated"
+        "updated": "Updated",
+        "version": "Version",
+        "size": "Size",
+        "category": "Category",
+        "developer": "Developer",
+        "open": "Open project",
+        "sourcesHint": "Available download sources",
+        "externalHint": "opens in a new tab",
+        "soonEyebrow": "Catalog",
+        "soonTitle": "New projects coming soon",
+        "soonDesc": "We're working on new games and will show them soon."
     },
     "playlist": {
         "eyebrow": "Media Library",
-        "title": "Playlist",
+        "title": "Music",
+        "albums": "albums",
+        "openAlbum": "Open album",
+        "backToAlbums": "All albums",
         "desc": "Pick a track — the music keeps playing even when you switch tabs.",
         "loading": "Loading...",
-        "empty": "No tracks."
+        "empty": "No tracks.",
+        "song": "Song",
+        "tracksTitle": "Tracks",
+        "tracks": "tracks",
+        "trackOne": "track",
+        "trackFew": "tracks",
+        "trackMany": "tracks",
+        "play": "Play",
+        "pause": "Pause",
+        "minUnit": "min",
+        "hourUnit": "h"
     },
     "player": {
         "nowPlaying": "Now playing",
-        "collapse": "Collapse",
-        "showPlayer": "Player",
-        "hidePlayer": "Hide player",
-        "expand": "Expand",
+        "expand": "Expand player",
+        "close": "Close player",
+        "closeMini": "Hide player",
+        "prev": "Previous track",
+        "next": "Next track",
+        "playPause": "Play or pause",
+        "shuffle": "Shuffle",
+        "repeat": "Repeat",
+        "mute": "Mute",
+        "unmute": "Unmute",
         "noCover": "No cover",
         "repeatOff": "Repeat off",
         "repeatAll": "Repeat playlist",
         "repeatOne": "Repeat track",
         "playError": "Error: audio file not found or blocked.",
         "ytLoading": "YouTube player is still loading. Please wait...",
-        "fileError": "Failed to load file. Check the link."
+        "fileError": "Failed to load the file. Check the link."
     },
     "errors": {
         "musicNotFound": "File data/music.json not found",
@@ -56,6 +120,24 @@
     },
     "donate": {
         "nav": "Donate",
-        "button": "Donate"
+        "eyebrow": "Support",
+        "title": "Support CoreTeam",
+        "desc": "If you like what we do, you can support the team and help us ship the next project.",
+        "button": "Donate",
+        "note": "Every donation goes into new games, music and experiments."
+    },
+    "credits": {
+        "eyebrow": "People",
+        "title": "Credits",
+        "desc": "The people who design, build and score our games.",
+        "loading": "Loading...",
+        "empty": "The people behind our projects will appear here soon.",
+        "openProfile": "Open profile",
+        "close": "Close"
+    },
+    "theme": {
+        "toggle": "Toggle theme",
+        "light": "Switch to light theme",
+        "dark": "Switch to dark theme"
     }
 }

@@ -1,0 +1,60 @@
+{
+  "id": "funkymogus",
+  "title": "FunkyMogus",
+  "description": "фнф - мод по AmongUs.",
+  "fullDescription": "БФ попадает в игру AmongUs, вам придётся доказать свою невиновность с помощью РЭП-БИТВЫ.",
+  "version": "1.0.0",
+  "size": "~91 MB",
+  "updated": "2026-10-28",
+  "developer": "CoreTeam.LLC",
+  "category": "Игра",
+  "assetPath": "./data/projects/FunkyMogus/images",
+  "cover": "./data/projects/FunkyMogus/images/cover.webp",
+  "icon": {
+    "16": "./data/projects/FunkyMogus/images/icon16.png",
+    "32": "./data/projects/FunkyMogus/images/icon32.png",
+    "48": "./data/projects/FunkyMogus/images/icon48.png",
+    "128": "./data/projects/FunkyMogus/images/icon128.png",
+    "256": "./data/projects/FunkyMogus/images/icon256.png"
+  },
+  "screenshots": [
+    "./data/projects/FunkyMogus/images/screenshot-1.webp",
+    "./data/projects/FunkyMogus/images/screenshot-2.webp",
+    "./data/projects/FunkyMogus/images/screenshot-3.webp"
+  ],
+  "links": [
+    {
+      "label": "FM - Vs Impostor Port",
+      "url": "https://gamebanana.com/dl/1732536",
+      "type": "download"
+    },
+    {
+      "label": "FM - V slice Port",
+      "url": "https://gamebanana.com/dl/1724594",
+      "type": "download"
+    }
+  ],
+  "tracks": [
+    {
+      "title": "Encounter",
+      "author": "WI Mickey Mouse",
+      "url": "./data/projects/FunkyMogus/audio/encounter.mp3",
+      "cover": "./images/covers/encounter.webp",
+      "duration": 130.945333
+    },
+    {
+      "title": "Conference",
+      "author": "ToeZard",
+      "url": "./data/projects/FunkyMogus/audio/conference.mp3",
+      "cover": "./images/covers/conference.webp",
+      "duration": 105.762721
+    },
+    {
+      "title": "Game Over",
+      "author": "Kapo4kaGeniy",
+      "url": "./data/projects/FunkyMogus/audio/gameover.mp3",
+      "cover": "./images/covers/gameover.webp",
+      "duration": 78.706917
+    }
+  ]
+}

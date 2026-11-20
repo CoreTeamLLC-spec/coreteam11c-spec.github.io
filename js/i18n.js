@@ -1,7 +1,10 @@
 window.I18n = (function () {
+    'use strict';
+
     const LANGS = ['ru', 'en'];
     const DEFAULT_LANG = 'en';
     const STORAGE_KEY = 'ct-lang';
+    const FILE_BY_LANG = { ru: 'russian.json', en: 'english.json' };
 
     let currentLang = DEFAULT_LANG;
     let dict = {};
@@ -12,13 +15,14 @@ window.I18n = (function () {
 
     async function load(lang) {
         if (!LANGS.includes(lang)) lang = DEFAULT_LANG;
-        const file = lang === 'ru' ? 'russian.json' : 'english.json';
         try {
-            const res = await fetch('./lang/' + file);
-            if (!res.ok) throw new Error('Lang file not found: ' + file);
-            dict = await res.json();
+            const res = await fetch('./lang/' + FILE_BY_LANG[lang], { cache: 'no-cache' });
+            if (!res.ok) throw new Error('Lang file not found: ' + FILE_BY_LANG[lang]);
+            const data = await res.json();
+            if (!data || typeof data !== 'object') throw new Error('Invalid language file');
+            dict = data;
             currentLang = lang;
-            localStorage.setItem(STORAGE_KEY, lang);
+            try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) { /* private mode */ }
             document.documentElement.setAttribute('lang', lang);
             apply();
             return true;
@@ -31,44 +35,73 @@ window.I18n = (function () {
 
     function t(key, fallback) {
         const value = getNested(dict, key);
-        return value !== undefined ? value : (fallback !== undefined ? fallback : key);
+        if (value !== undefined && value !== null) return value;
+        return fallback !== undefined ? fallback : key;
     }
 
     function apply() {
         document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            const value = t(key);
+            const value = getNested(dict, el.getAttribute('data-i18n'));
             if (value !== undefined) el.textContent = value;
         });
 
         document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-            const key = el.getAttribute('data-i18n-placeholder');
-            const value = t(key);
+            const value = getNested(dict, el.getAttribute('data-i18n-placeholder'));
             if (value !== undefined) el.setAttribute('placeholder', value);
         });
 
         document.querySelectorAll('[data-i18n-title]').forEach(el => {
-            const key = el.getAttribute('data-i18n-title');
-            const value = t(key);
+            const value = getNested(dict, el.getAttribute('data-i18n-title'));
             if (value !== undefined) el.setAttribute('title', value);
         });
 
-        document.querySelectorAll('[data-lang]').forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.lang === currentLang);
+        document.querySelectorAll('[data-i18n-aria-label]').forEach(el => {
+            const value = getNested(dict, el.getAttribute('data-i18n-aria-label'));
+            if (value !== undefined) el.setAttribute('aria-label', value);
         });
 
-        const hash = location.hash;
-        if (hash.startsWith('#project/') && window.__rerenderProject) {
-            window.__rerenderProject();
-        }
+        document.querySelectorAll('[data-i18n-content]').forEach(el => {
+            const value = getNested(dict, el.getAttribute('data-i18n-content'));
+            if (value !== undefined) el.setAttribute('content', value);
+        });
+
+        document.querySelectorAll('[data-lang]').forEach(btn => {
+            const isActive = btn.dataset.lang === currentLang;
+            btn.classList.toggle('active', isActive);
+            btn.setAttribute('aria-pressed', String(isActive));
+        });
+
+        document.dispatchEvent(new CustomEvent('i18n:applied', { detail: { lang: currentLang } }));
     }
 
     function getLang() {
         return currentLang;
     }
 
+    function showWelcomeModal() {
+        const modal = document.getElementById('langModal');
+        if (!modal) return;
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        modal.inert = false;
+        document.body.classList.add('modal-open');
+        const first = modal.querySelector('.lang-modal-btn');
+        if (first) setTimeout(() => first.focus(), 250);
+    }
+
+    function hideWelcomeModal() {
+        const modal = document.getElementById('langModal');
+        if (modal) {
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+            modal.inert = true;
+        }
+        document.body.classList.remove('modal-open');
+    }
+
     function init() {
-        const saved = localStorage.getItem(STORAGE_KEY);
+        let saved = null;
+        try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) { /* private mode */ }
         if (!saved) {
             showWelcomeModal();
             return load(DEFAULT_LANG);
@@ -76,49 +109,50 @@ window.I18n = (function () {
         return load(saved);
     }
 
-    function showWelcomeModal() {
-        const modal = document.getElementById('langModal');
-        if (!modal) return;
-        modal.classList.add('active');
-    }
-
     function bindEvents() {
         document.querySelectorAll('.lang-modal-btn').forEach(btn => {
             btn.addEventListener('click', async () => {
-                const lang = btn.dataset.lang;
-                await load(lang);
-                const modal = document.getElementById('langModal');
-                if (modal) modal.classList.remove('active');
+                await load(btn.dataset.lang);
+                hideWelcomeModal();
             });
         });
 
         const globeBtn = document.getElementById('globeBtn');
         const dropdown = document.getElementById('langDropdown');
         if (globeBtn && dropdown) {
+            const closeDropdown = () => {
+                dropdown.classList.remove('open');
+                globeBtn.classList.remove('active');
+                globeBtn.setAttribute('aria-expanded', 'false');
+            };
+
             globeBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                dropdown.classList.toggle('open');
-                globeBtn.classList.toggle('active');
+                const isOpen = dropdown.classList.toggle('open');
+                globeBtn.classList.toggle('active', isOpen);
+                globeBtn.setAttribute('aria-expanded', String(isOpen));
             });
 
             document.addEventListener('click', (e) => {
-                if (!dropdown.contains(e.target) && e.target !== globeBtn) {
-                    dropdown.classList.remove('open');
-                    globeBtn.classList.remove('active');
+                if (!dropdown.contains(e.target) && !globeBtn.contains(e.target)) closeDropdown();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && dropdown.classList.contains('open')) {
+                    closeDropdown();
+                    globeBtn.focus();
                 }
             });
-        }
 
-        document.querySelectorAll('.lang-dropdown-item').forEach(item => {
-            item.addEventListener('click', async (e) => {
-                e.stopPropagation();
-                const lang = item.dataset.lang;
-                await load(lang);
-                if (dropdown) dropdown.classList.remove('open');
-                if (globeBtn) globeBtn.classList.remove('active');
+            document.querySelectorAll('.lang-dropdown-item').forEach(item => {
+                item.addEventListener('click', async (e) => {
+                    e.stopPropagation();
+                    await load(item.dataset.lang);
+                    closeDropdown();
+                });
             });
-        });
+        }
     }
 
-    return { init, t, apply, getLang, load, bindEvents };
+    return { init, t, apply, getLang, load, bindEvents, hideWelcomeModal };
 })();

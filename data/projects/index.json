@@ -1,1 +1,3 @@
-["funkymogus", "any-new-project"]
+[
+  { "id": "funkymogus", "file": "FunkyMogus/funkymogus.json" }
+]

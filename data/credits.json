@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Boofy",
+    "role": "Разработчик",
+    "bio": "Разработчик CoreTeam.LLC.",
+    "fullBio": "Разработчик CoreTeam.LLC. Работает над играми и цифровыми проектами команды.",
+    "avatar": "./images/credits/Boofy.png",
+    "banner": "./images/credits/BannerBoofy.jpg",
+    "socials": [
+      {
+        "label": "DonationAlerts",
+        "url": "https://www.donationalerts.com/r/boofy09",
+        "icon": "donation"
+      }
+    ]
+  }
+]

@@ -1,20 +1,26 @@
 [
   {
+    "project": "funkymogus",
     "title": "Encounter",
     "author": "WI Mickey Mouse",
-    "url": "./audio/encounter.mp3",
-    "cover": "./images/covers/encounter.png"
+    "url": "./data/projects/FunkyMogus/audio/encounter.mp3",
+    "cover": "./images/covers/encounter.webp",
+    "duration": 130.945333
   },
   {
+    "project": "funkymogus",
     "title": "Conference",
     "author": "ToeZard",
-    "url": "./audio/conference.mp3",
-    "cover": "./images/covers/conference.png"
+    "url": "./data/projects/FunkyMogus/audio/conference.mp3",
+    "cover": "./images/covers/conference.webp",
+    "duration": 105.762721
   },
   {
+    "project": "funkymogus",
     "title": "Game Over",
     "author": "Kapo4kaGeniy",
-    "url": "./audio/gameover.mp3",
-    "cover": "./images/covers/gameover.png"
+    "url": "./data/projects/FunkyMogus/audio/gameover.mp3",
+    "cover": "./images/covers/gameover.webp",
+    "duration": 78.706917
   }
 ]
